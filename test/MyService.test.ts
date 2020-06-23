@@ -33,4 +33,18 @@ describe("MyService", () => {
 
     expect(response).toEqual(null);
   });
+
+  it("valid username and password are accepted", () => {
+    const token = new SSOToken();
+    const registry: SingleSignOnRegistry = {
+      registerNewSession: () => token,
+      isValid: () => true,
+      unregister: () => {},
+    };
+    const service = new MyService(registry);
+
+    const response = service.handleRegister("aUsername", "aPassword");
+
+    expect(response).toEqual(token);
+  });
 });
