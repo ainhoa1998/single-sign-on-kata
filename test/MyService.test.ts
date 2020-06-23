@@ -14,8 +14,11 @@ describe("MyService", () => {
   });
 
   it("valid sso token is accepted", () => {
-    const registry = {} as SingleSignOnRegistry;
-    registry.isValid = () => true;
+    const registry: SingleSignOnRegistry = {
+      registerNewSession: () => new SSOToken(),
+      isValid: () => true,
+      unregister: () => {},
+    };
     const service = new MyService(registry);
 
     const response = service.handleRequest(new Request("Foo", new SSOToken()));
