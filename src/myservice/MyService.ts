@@ -23,7 +23,7 @@ export default class MyService {
   }
 
   handleUnRegister(token: SSOToken) {
-    // TODO: unregister token
+    this.registry?.unregister(token);
     return;
   }
 }

@@ -47,4 +47,22 @@ describe("MyService", () => {
 
     expect(response).toEqual(token);
   });
+
+  it("unregister user", () => {
+    let hasUnregisterBeenCalled = false;
+    const token = new SSOToken();
+    const registry: SingleSignOnRegistry = {
+      registerNewSession: () => token,
+      isValid: () => true,
+      unregister: () => {
+        hasUnregisterBeenCalled = true;
+      },
+    };
+
+    const service = new MyService(registry);
+
+    service.handleUnRegister(token);
+
+    expect(hasUnregisterBeenCalled).toEqual(true);
+  });
 });
