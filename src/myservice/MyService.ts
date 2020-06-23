@@ -19,10 +19,7 @@ export default class MyService {
   }
 
   handleRegister(username: string, password: string): SSOToken | null {
-    if (this.registry?.registerNewSession(username, password) !== undefined) {
-      return this.registry?.registerNewSession(username, password);
-    }
-    return null;
+    return this.registry?.registerNewSession(username, password) || null;
   }
 
   handleUnRegister(token: SSOToken) {
