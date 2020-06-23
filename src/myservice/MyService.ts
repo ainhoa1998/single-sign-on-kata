@@ -18,9 +18,9 @@ export default class MyService {
     return new Response("");
   }
 
-  handleRegister(username: string, password: string): SSOToken {
+  handleRegister(username: string, password: string): SSOToken | null {
     // TODO: register and return token
-    return new SSOToken();
+    return null;
   }
 
   handleUnRegister(token: SSOToken) {

@@ -25,4 +25,14 @@ describe("MyService", () => {
 
     expect(response.getText()).toEqual("hello Foo!");
   });
+
+  it("invalid username and password are rejected", () => {
+    const username: string = "aUsername";
+    const psw: string = "aPassword";
+    const service = new MyService();
+
+    const response = service.handleRegister(username, psw);
+
+    expect(response).toEqual(null);
+  });
 });
