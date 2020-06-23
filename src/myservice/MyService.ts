@@ -13,6 +13,9 @@ export default class MyService {
 
   handleRequest(request: Request): Response {
     // TODO: check request has a valid SSOToken
+    if (this.registry?.isValid(request.getSSOToken())) {
+      return new Response(`hello ${request.getName()}!`);
+    }
     return new Response("");
   }
 

@@ -1,3 +1,5 @@
+import SingleSignOnRegistry from "src/sso/SingleSignOnRegistry";
+
 import MyService from "../src/myservice/MyService";
 import Request from "../src/sso/Request";
 import SSOToken from "../src/sso/SSOToken";
@@ -9,5 +11,15 @@ describe("MyService", () => {
     const response = service.handleRequest(new Request("Foo", new SSOToken()));
 
     expect(response.getText()).not.toEqual("hello Foo!");
+  });
+
+  it("valid sso token is accepted", () => {
+    const registry = {} as SingleSignOnRegistry;
+    registry.isValid = () => true;
+    const service = new MyService(registry);
+
+    const response = service.handleRequest(new Request("Foo", new SSOToken()));
+
+    expect(response.getText()).toEqual("hello Foo!");
   });
 });
