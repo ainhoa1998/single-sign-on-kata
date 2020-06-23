@@ -19,7 +19,6 @@ export default class MyService {
   }
 
   handleRegister(username: string, password: string): SSOToken | null {
-    // TODO: register and return token
     return null;
   }
 
