@@ -27,11 +27,9 @@ describe("MyService", () => {
   });
 
   it("invalid username and password are rejected", () => {
-    const username: string = "aUsername";
-    const psw: string = "aPassword";
     const service = new MyService();
 
-    const response = service.handleRegister(username, psw);
+    const response = service.handleRegister("aUsername", "aPassword");
 
     expect(response).toEqual(null);
   });
